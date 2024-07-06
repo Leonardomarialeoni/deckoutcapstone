@@ -1,6 +1,9 @@
-    
 <main class="text-center">
-    <h1 class="text-center m-4 fw-bold">LA TUA COLLEZIONE:</h1>
+  <h1 class="text-center p-4 fw-bold">LA TUA COLLEZIONE:</h1>
 
-    <app-cardlist [user]="user" [cardArray]="cardArray"></app-cardlist>
+  <div class="p-5">
+    <app-cardlist [user]="user" [cardArray]="cardArray" [isCollection]="true"></app-cardlist>
+  </div>
+
+
 </main>

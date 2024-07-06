@@ -1,15 +1,19 @@
 <body>
+  <div class="profile">
   <h1 class="text-center m-4 fw-bold">Il Tuo Profilo</h1>
 
-  <div>
-    <h2 class="text-center m-4 fw-bold">I tuoi Dettagli</h2>
-    <p class="text-center fw-bold">Nome:</p>
-    <p class="text-center fw-bold">Cognome:</p>
-    <p class="text-center fw-bold">Nickname:</p>
-    <p class="text-center fw-bold">Email:</p>
+  <div class="p-3">
+    <div id="profiloContainer" class="m-auto">
+      <h2 class="text-center m-4 fw-bold">I tuoi Dettagli</h2>
+      <p class="text-start px-5 fw-bold">Nome: {{user.nome}}</p>
+      <p class="text-start px-5 fw-bold">Cognome: {{user.cognome}}</p>
+      <p class="text-start px-5 fw-bold">Username: {{user.username}}</p>
+      <p class="text-start px-5 fw-bold">Email: {{user.email}}</p>
+    </div>
   </div>
 
-  <div>
+  <!--<div>
     <h2 class="text-center m-4 fw-bold">Le tue Decklist:</h2>
-  </div>
+  </div>-->
+</div>
 </body>

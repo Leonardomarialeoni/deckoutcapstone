@@ -28,4 +28,6 @@ export class CollezioneComponent {
     this.user = this.httpService.getCurrentUser();
   }
 
+ 
+
 }

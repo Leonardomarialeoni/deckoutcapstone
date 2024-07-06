@@ -7,9 +7,21 @@ h1 {
 }
 
 h2 {
-    color: #A35DCA;
+    color: white;
 }
 
 p {
     color: white;
+}
+
+#profiloContainer {
+    
+    width: 50%;
+    background-color: #A35DCA;
+    border: 3px solid #2B0754 ;
+    border-radius: 10px;
+}
+
+.profile {
+    min-height: 100vh;
 }

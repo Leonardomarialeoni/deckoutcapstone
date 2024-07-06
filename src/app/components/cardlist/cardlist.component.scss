@@ -1,3 +1,29 @@
 div {
     padding: 0;
 }
+
+#cardContainer {
+    background-color: #A35DCA;
+    border: 3px solid #2B0754 ;
+    border-radius: 10px;
+}
+
+/* CSS personalizzato per il floating button */
+.position-fixed {
+    z-index: 1000;
+  }
+  
+  .position-fixed button {
+    border-radius: 5px; /* Rende il pulsante rotondo */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Aggiunge ombra per evidenziare il pulsante */
+  }
+  
+  .position-fixed button:hover {
+    transform: scale(1.1); /* Effetto di zoom-in al passaggio del mouse */
+  }
+  
+
+.btn-floating {
+    background-color: #2B0754;
+    border: 3px solid #A35DCA;
+}

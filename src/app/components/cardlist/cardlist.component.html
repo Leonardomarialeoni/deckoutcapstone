@@ -1,10 +1,16 @@
-<div class="row">
+<div class="row p-2" id="cardContainer">
   <div class="col-3" *ngFor="let card of cardArray">
     <app-card
       [card]="card"
-      [isInCollection]="isCardInUserCollection(card)"
+      [isInCollection]="isCollection ? isCardInUserCollection(card) : true"
       (isCardClicked)="updateUserCollection($event)">
     </app-card>
+  </div>
+
+  <div class="position-fixed bottom-0 end-0 p-4 d-flex justify-content-end" *ngIf="isCollection">
+    <button class="btn btn-primary btn-floating fw-bold" type="button" (click)="saveCollection()" >
+      SAVE COLLECTION
+    </button>
   </div>
 </div>
 

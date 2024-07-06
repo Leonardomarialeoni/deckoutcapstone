@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../../http.service';
+import { User } from '../interfaces/user.interface';
 
 @Component({
   selector: 'app-profilo',
@@ -7,6 +9,15 @@ import { Component } from '@angular/core';
   templateUrl: './profilo.component.html',
   styleUrl: './profilo.component.scss'
 })
-export class ProfiloComponent {
+export class ProfiloComponent implements OnInit{
 
+user! : User;
+
+  constructor(private httpService: HttpService) { }
+
+  ngOnInit(): void {
+   this.user = this.httpService.getCurrentUser();
+  }
+
+  
 }
