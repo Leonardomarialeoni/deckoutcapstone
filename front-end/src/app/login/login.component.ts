@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { Register } from '../interfaces/register.interface';
+import { LocalStorageService } from '../services/LocalStorageService.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ import { Register } from '../interfaces/register.interface';
 })
 export class LoginComponent {
   loginData = {
-    email: '',
+    username: '',
     password: ''
   };
 
@@ -24,16 +25,14 @@ export class LoginComponent {
     password: ''
   };
 
-  constructor(private router: Router, private authSrv: AuthService) {}
+  constructor(private router: Router, private authSrv: AuthService, private localStorageService: LocalStorageService) {}
 
   login() {
     console.log(this.loginData);
     try {
-      this.authSrv.login(this.loginData).subscribe(() => {
-        setTimeout(() => {
-          this.router.navigate(['/']);
-        }, 300);
-      });
+      this.authSrv.login(this.loginData);
+      this.localStorageService.setItem('token',JSON.stringify(this.loginData));
+      window.location.reload();
     } catch (error) {
       console.error(error);
     }
@@ -43,6 +42,16 @@ export class LoginComponent {
     console.log(this.signupData);
     try {
       this.authSrv.signup(this.signupData).subscribe(() => {
+        const currentUser = {
+          nome: "Leonardo",
+          cognome: "Leoni",
+          email: this.signupData.email,
+          username: this.signupData.username,
+          password: this.signupData.password,
+          id: 123,
+          collezione: [1, 42, 87]
+        };
+        this.authSrv.setCurrentUser(currentUser);
         this.router.navigate(['/login']);
       });
     } catch (error) {
@@ -59,4 +68,5 @@ export class LoginComponent {
   signUp() {
     this.container.nativeElement.classList.add('right-panel-active');
   }
+
 }

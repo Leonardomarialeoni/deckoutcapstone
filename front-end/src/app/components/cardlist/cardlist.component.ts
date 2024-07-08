@@ -3,7 +3,7 @@ import { CardComponent } from '../card/card.component';
 import { Card } from '../../interfaces/card.interface';
 import { CommonModule, NgFor } from '@angular/common';
 import { User } from '../../interfaces/user.interface';
-
+import { CollectionService } from '../../services/CollectionService.service';
 @Component({
   selector: 'app-cardlist',
   standalone: true,
@@ -12,6 +12,9 @@ import { User } from '../../interfaces/user.interface';
   imports: [CardComponent, CommonModule],
 })
 export class CardlistComponent {
+
+constructor (private collectionService: CollectionService) {}
+
   @Input() cardArray!: Card[];
   @Input() user!: User;
   @Input() isCollection = false;
@@ -60,6 +63,7 @@ export class CardlistComponent {
     const collection = this.cardArray.filter((card) => {
       return this.isCardInUserCollection(card);
     })
+    this.collectionService.modificaCollezione(collection);
     console.log(collection);
   }
 }

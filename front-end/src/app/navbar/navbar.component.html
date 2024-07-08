@@ -1,16 +1,27 @@
-<nav class="navbar navbar-expand-lg">  
-    <div class="container-fluid">
-      <a class="navbar-brand text-white" href="#">DECKOUT</a>
-      
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-  
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active text-secondary" aria-current="page" href="/">Home</a>
-          </li>
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand text-white" href="#">DECKOUT</a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarTogglerDemo01"
+      aria-controls="navbarTogglerDemo01"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active text-secondary" aria-current="page" href="/"
+            >Home</a
+          >
+        </li>
+        <div *ngIf="isLogged" class="d-flex flex-wrap justify-content-between">
           <li class="nav-item">
             <a class="nav-link text-secondary" href="/profilo">Profilo</a>
           </li>
@@ -20,8 +31,18 @@
           <!--<li class="nav-item">
             <a class="nav-link text-secondary" href="/deckbuilder">Deckbuilder</a>
           </li>-->
-        </ul>
-      </div>
-      <button type="button" class="btn mx-2 text-light"><a class="nav-link" href="/login">Login</a></button>
+        </div>
+      </ul>
     </div>
-  </nav>
+    <div *ngIf="!isLogged">
+      <button type="button" class="btn mx-2 text-light">
+        <a class="nav-link" href="/login">Login</a>
+      </button>
+    </div>
+    <div *ngIf="isLogged">
+      <button type="button" class="btn mx-2 text-light" (click)="logOut()">
+        <a class="nav-link" href="/login">Logout</a>
+      </button>
+    </div>
+  </div>
+</nav>

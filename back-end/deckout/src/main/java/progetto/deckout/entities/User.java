@@ -30,7 +30,7 @@ import java.util.List;
 
         private String firstName;
         private String lastName;
-        //private Array collection;
+
 
         @Override
         public Collection<? extends GrantedAuthority> getAuthorities() {
