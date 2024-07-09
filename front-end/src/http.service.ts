@@ -28,12 +28,14 @@ export class HttpService {
   }
 
   getCurrentUser() {
-    return { nome: "Leonardo",
-      cognome: "Leoni",
-      email: "leonardo@leoni.it",
-      username: "Secco",
-      password: "secco1992",
-      id: 123,
-      collezione: [1, 42, 87]}
+    return {
+      nome: '',
+      cognome: '',
+      email: 'leonardo@leoni.it',
+      username: 'Secco',
+      password: 'secco1992',
+      id: 1,
+      collezione: [],
+    };
   }
 }

@@ -10,28 +10,33 @@ import { LocalStorageService } from '../services/LocalStorageService.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
   standalone: true,
-  imports: [FormsModule]
+  imports: [FormsModule],
 })
 export class LoginComponent {
   loginData = {
     username: '',
-    password: ''
+    password: '',
   };
 
   signupData: Register = {
     username: '',
     name: '',
+    surname: '',
     email: '',
-    password: ''
+    password: '',
   };
 
-  constructor(private router: Router, private authSrv: AuthService, private localStorageService: LocalStorageService) {}
+  constructor(
+    private router: Router,
+    private authSrv: AuthService,
+    private localStorageService: LocalStorageService
+  ) {}
 
   login() {
     console.log(this.loginData);
     try {
       this.authSrv.login(this.loginData);
-      this.localStorageService.setItem('token',JSON.stringify(this.loginData));
+      this.localStorageService.setItem('token', JSON.stringify(this.loginData));
       window.location.reload();
     } catch (error) {
       console.error(error);
@@ -43,13 +48,13 @@ export class LoginComponent {
     try {
       this.authSrv.signup(this.signupData).subscribe(() => {
         const currentUser = {
-          nome: "Leonardo",
-          cognome: "Leoni",
+          nome: this.signupData.name ?? '',
+          cognome: this.signupData.surname ?? '',
           email: this.signupData.email,
           username: this.signupData.username,
           password: this.signupData.password,
-          id: 123,
-          collezione: [1, 42, 87]
+          id: 1,
+          collezione: [],
         };
         this.authSrv.setCurrentUser(currentUser);
         this.router.navigate(['/login']);
@@ -68,5 +73,4 @@ export class LoginComponent {
   signUp() {
     this.container.nativeElement.classList.add('right-panel-active');
   }
-
 }

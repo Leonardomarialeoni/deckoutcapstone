@@ -5,7 +5,7 @@ import { tap } from 'rxjs/operators';
 import { text } from 'stream/consumers';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   private apiUrl = 'http://localhost:8080';
@@ -16,14 +16,16 @@ export class AuthService {
 
   login(credentials: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/api/users/login`, credentials).pipe(
-      tap(user => {
+      tap((user) => {
         this.userSubject.next(user);
       })
     );
   }
 
   signup(data: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/api/users/register`, data, {responseType: "text"});
+    return this.http.post(`${this.apiUrl}/api/users/register`, data, {
+      responseType: 'text',
+    });
   }
 
   logout() {
@@ -32,5 +34,9 @@ export class AuthService {
 
   setCurrentUser(user: any) {
     this.userSubject.next(user);
+  }
+
+  getCurrentUser() {
+    return this.userSubject;
   }
 }
