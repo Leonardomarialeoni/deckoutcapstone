@@ -11,6 +11,7 @@ import progetto.deckout.entities.User;
 import progetto.deckout.jwt.JwtUtil;
 import progetto.deckout.service.UserService;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -70,6 +71,24 @@ public class UserController {
             return ResponseEntity.ok(user.get());
         } else {
             return ResponseEntity.notFound().build();
- }
-}
+        }
+    }
+
+    @PostMapping("/{userId}/cards/{cardId}")
+    public ResponseEntity<String> addCardToUser(@PathVariable Long userId, @PathVariable Long cardId) {
+        userService.addCardToUser(userId, cardId);
+        return ResponseEntity.ok("Card added to user collection");
+    }
+
+    @DeleteMapping("/{userId}/cards/{cardId}")
+    public ResponseEntity<String> removeCardFromUser(@PathVariable Long userId, @PathVariable Long cardId) {
+        userService.removeCardFromUser(userId, cardId);
+        return ResponseEntity.ok("Card removed from user collection");
+    }
+
+    @PutMapping("/{userId}/cards")
+    public ResponseEntity<String> addCardsToUserCollection(@PathVariable Long userId, @RequestBody List<Long> cardIds) {
+        userService.addCardsToUserCollection(userId, cardIds);
+        return ResponseEntity.ok("Cards added to user collection");
+    }
 }

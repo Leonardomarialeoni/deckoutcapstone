@@ -1,8 +1,9 @@
 package progetto.deckout.DTO;
 
+import progetto.deckout.entities.Card;
 import progetto.deckout.entities.User;
 
-import java.lang.reflect.Array;
+import java.util.List;
 
 public class UserDTO {
 
@@ -12,76 +13,23 @@ public class UserDTO {
     private String email;
     private String firstName;
     private String lastName;
-    //private Array collection;
+    private List<Card> cards;
 
     public UserDTO() {
     }
 
-    public UserDTO(Long id, String username, String password, String email, String firstName, String lastName, Array collection) {
+    public UserDTO(Long id, String username, String password, String email, String firstName, String lastName, List<Card> cards) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
-       // this.collection = collection;
+        this.cards = cards;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    //public Array getCollection() {
-       // return collection;
-   // }
-
-    //public void setCollection(Array collection) {
-        //this.collection = collection;
-    //}
+    // Getters and setters
+    // ...
 
     public User toEntities() {
         User user = new User();
@@ -91,11 +39,11 @@ public class UserDTO {
         user.setEmail(this.email);
         user.setFirstName(this.firstName);
         user.setLastName(this.lastName);
-        //user.setCollection(this.collection);
+        user.setCards(this.cards);
         return user;
     }
 
-    /*public static UserDTO fromEntity(User user) {
+    public static UserDTO fromEntity(User user) {
         return new UserDTO(
                 user.getId(),
                 user.getUsername(),
@@ -103,6 +51,7 @@ public class UserDTO {
                 user.getEmail(),
                 user.getFirstName(),
                 user.getLastName(),
-                user.getCollection());
-}*/
+                user.getCards()
+        );
+    }
 }
